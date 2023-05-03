@@ -17,7 +17,7 @@ namespace ControleBar.ConsoleApp
 
 
             TelaGarcom telaGarcom = new TelaGarcom(repositorioGarcom);
-            TelaMesa telaMesa = new TelaMesa(repositorioMesa/*, repositorioGarcom,telaGarcom*/);
+            TelaMesa telaMesa = new TelaMesa(repositorioMesa);
             TelaProduto telaProduto = new TelaProduto(repositorioProduto);
             TelaContas telaContas = new TelaContas(repositorioContas, repositorioProduto, repositorioMesa, repositorioGarcom, telaGarcom, telaMesa, telaProduto);
 
@@ -119,7 +119,18 @@ namespace ControleBar.ConsoleApp
                     {
                         telaContas.ExcluirRegistro();
                     }
-
+                    else if (subMenu == "5")
+                    {
+                        telaContas.MostrarContasEmAberto();
+                    }
+                    else if (subMenu == "6")
+                    {
+                        telaContas.AdicionarPedidoNaConta();
+                    }
+                    else if (subMenu == "7")
+                    {
+                        telaContas.FecharConta();
+                    }
                 }
 
 

@@ -13,13 +13,13 @@ namespace ControleBar.ConsoleApp.ModuloProduto
     {
         public string nome;
         public int valor;
-        public int quantidade;
+        
 
-        public Produto(string nome, int valor, int quantidade)
+        public Produto(string nome, int valor)
         {
             this.nome = nome;
             this.valor = valor;
-            this.quantidade = quantidade;
+            
         }
 
         public override void AtualizarInformacoes(EntidadeBase registroAtualizado)
@@ -27,7 +27,7 @@ namespace ControleBar.ConsoleApp.ModuloProduto
             Produto produtoAtualizado = (Produto)registroAtualizado; 
             this.nome = produtoAtualizado.nome;
             this.valor = produtoAtualizado.valor;
-            this.quantidade = produtoAtualizado.quantidade;
+            
         }
 
         public override ArrayList Validar()

@@ -2,6 +2,7 @@
 using ControleBar.ConsoleApp.ModuloGarcom;
 using ControleBar.ConsoleApp.ModuloMesa;
 using ControleBar.ConsoleApp.ModuloProduto;
+using Microsoft.Win32;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -32,18 +33,65 @@ namespace ControleBar.ConsoleApp.Contas
             this.telaGarcom = telaGarcom;
             this.telaMesa = telaMesa;
             this.telaProduto = telaProduto;
+
+            nomeEntidade = "Conta";
+            sufixo = "s";
         }
 
+        public override string ApresentarMenu()
+        {
+            Console.Clear();
+
+            Console.WriteLine($"Cadastro de {nomeEntidade}{sufixo} \n");
+
+            Console.WriteLine($"Digite 1 para Inserir {nomeEntidade}");
+            Console.WriteLine($"Digite 2 para Visualizar {nomeEntidade}{sufixo}");
+            Console.WriteLine($"Digite 3 para Editar {nomeEntidade}{sufixo}");
+            Console.WriteLine($"Digite 4 para Excluir {nomeEntidade}{sufixo}");
+            Console.WriteLine($"Digite 5 para Visualizar {nomeEntidade}{sufixo} Abertas");
+            Console.WriteLine($"Digite 6 para Adicionar pedido na {nomeEntidade}");
+            Console.WriteLine($"Digite 7 para Listar pedidos na {nomeEntidade}");
+            Console.WriteLine($"Digite 8 para Fechar {nomeEntidade}");
+            Console.WriteLine($"Digite 9 para Visualizar Total do dia");
+
+            Console.WriteLine("Digite s para Sair");
+
+            string opcao = Console.ReadLine();
+
+            return opcao;
+        }
         protected override void MostrarTabela(ArrayList registros)
         {
-            Console.WriteLine("{0, -10} | {1, -20} | {2, -20}", "Id", "Número", "Mesa", "Garçom", "Produto", "Quantidade", "Valor");
+            Console.WriteLine("{0, -10} | {1, -20} | {2, -20} | {3, -20}", "Id", "Número", "Mesa", "Garçom");
 
-            Console.WriteLine("------------------------------------------------------------------------------------------------");
+            Console.WriteLine("--------------------------------------------------------------------------------");
 
             foreach (Contas contas in registros)
             {
-                Console.WriteLine("{0, -10} | {1, -20} | {2, -20}", contas.id, contas.numero, contas.mesa.numero, contas.garcom.nome, contas.produto.nome, contas.produto.quantidade, contas.produto.valor);
+                Console.WriteLine("{0, -10} | {1, -20} | {2, -20}| {3, -20}", contas.id, contas.numero, contas.mesa.numero, contas.garcom.nome);
             }
+        }
+
+        protected void MostrarContasEmAberto()
+        {
+            Console.WriteLine("{0, -10} | {1, -20} | {2, -20} | {3, -20}", "Id", "Número", "Mesa", "Garçom");
+
+            Console.WriteLine("----------------------------------------------------------------------------------");
+
+            foreach (Contas contas in repositorioContas.SelecionarTodos())
+            {
+                if (contas.status == "Aberto")
+                {
+                    Console.WriteLine("{0, -10} | {1, -20} | {2, -20} | {3, -20}", contas.id, contas.numero, contas.mesa.numero, contas.garcom.nome);
+                }
+                
+            }
+
+        }
+
+        public void AdicionarPedidoNaConta()
+        {
+
         }
 
         protected override EntidadeBase ObterRegistro()

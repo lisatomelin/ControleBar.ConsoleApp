@@ -20,13 +20,13 @@ namespace ControleBar.ConsoleApp.ModuloProduto
         }
         protected override void MostrarTabela(ArrayList registros)
         {
-            Console.WriteLine("{0, -10} | {1, -20} | {2, -20} | {3, -20}", "Id", "Nome", "Valor", "Quantidade");
+            Console.WriteLine("{0, -10} | {1, -20} | {2, -20}", "Id", "Nome", "Valor");
 
             Console.WriteLine("---------------------------------------------------------------------------------------");
 
             foreach (Produto produto in registros)
             {
-                Console.WriteLine("{0, -10} | {1, -20} | {2, -20} | {3, -20}", produto.id, produto.nome, produto.valor, produto.quantidade );
+                Console.WriteLine("{0, -10} | {1, -20} | {2, -20}", produto.id, produto.nome, produto.valor);
             }
         }
 
@@ -38,12 +38,8 @@ namespace ControleBar.ConsoleApp.ModuloProduto
             Console.Write("Digite o Valor: ");
             int valor = Convert.ToInt32(Console.ReadLine());
 
-            Console.Write("Digite a quantidade: ");
-            int quantidade = Convert.ToInt32(Console.ReadLine());
-
-
-
-            return new Produto(nome, valor, quantidade);
+            
+            return new Produto(nome, valor);
         }
     }
 }

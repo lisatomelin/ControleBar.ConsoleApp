@@ -18,6 +18,7 @@ namespace ControleBar.ConsoleApp.Contas
         public Mesa mesa;
         public Produto produto;
         public Garcom garcom;
+        public string status;
 
         public Contas(int numero, Mesa mesa, Produto produto, Garcom garcom, DateTime data)
         {
@@ -26,6 +27,7 @@ namespace ControleBar.ConsoleApp.Contas
             this.produto = produto;
             this.garcom = garcom;
             this.data = data;
+            this.status = "Aberto";
         }
 
         public override void AtualizarInformacoes(EntidadeBase registroAtualizado)

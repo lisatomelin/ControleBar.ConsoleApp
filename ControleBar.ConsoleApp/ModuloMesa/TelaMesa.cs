@@ -19,7 +19,7 @@ namespace ControleBar.ConsoleApp.ModuloMesa
         {
             
             this.repositorioBase = repositorioMesa;
-            //this.repositorioGarcom = repositorioGarcom;
+            //this.repositorioGarcom = repos
             nomeEntidade = "Mesa";
             sufixo = "s";
 
@@ -27,13 +27,13 @@ namespace ControleBar.ConsoleApp.ModuloMesa
         protected override void MostrarTabela(ArrayList registros)
         {
 
-            Console.WriteLine("{0, -10} | {1, -20} | {2, -20}", "Id", "Número", "Nome Garçom");
+            Console.WriteLine("{0, -10} | {1, -20}", "Id", "Número");
 
             Console.WriteLine("------------------------------------------------------------------------------------------------");
 
             foreach (Mesa mesa in registros)
             {
-                Console.WriteLine("{0, -10} | {1, -20} | {2, -20}", mesa.id, mesa.numero /*mesa.garcom.nome*/);
+                Console.WriteLine("{0, -10} | {1, -20}", mesa.id, mesa.numero);
             }
 
         }
